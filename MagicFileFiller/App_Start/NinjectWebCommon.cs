@@ -10,6 +10,12 @@ namespace MagicFileFiller.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using System.Data.Entity;
+    using DatabaseContext;
+    using DatabaseContext.Interfaces;
+    using Ninject.Extensions.NamedScope;
+    using Repositories.Interfaces;
+    using Repositories;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +67,14 @@ namespace MagicFileFiller.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            kernel.Bind<IDatabaseInitializer<MagicFileFillerEntities>>().To<CreateDatabaseIfNotExist>();
+            kernel.Bind<IDbContextFactory<MagicFileFillerEntities>>().To<DbContextFactory>().InCallScope();
+            kernel.Bind<IDbContextManager>().To<DbContextManager<MagicFileFillerEntities>>().InCallScope(); ;
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InCallScope(); ;
+
+            //kernel.Bind<IChangeRepository>().To<ChangeRepository>().InCallScope();
+            kernel.Bind<IWordFieldRepository>().To<WordFieldRepository>().InCallScope();
+            kernel.Bind<IWordFileRepository>().To<WordFileRepository>().InCallScope();
+        }
     }
 }
