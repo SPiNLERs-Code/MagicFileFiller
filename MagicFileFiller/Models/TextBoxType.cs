@@ -5,8 +5,10 @@ using System.Web;
 
 namespace MagicFileFiller.Models
 {
-    public class Textbox : WordField
+    public class TextBoxType : FieldType
     {
-        public string Text { get; set; }
+        public int MaxLenght { get; set; }
+
+        public string DefaultValue { get; set; }
     }
 }

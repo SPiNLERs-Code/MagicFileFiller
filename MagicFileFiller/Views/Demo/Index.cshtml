@@ -1,0 +1,13 @@
+﻿@model MagicFileFiller.ViewModels.Demo.FillListViewModel
+
+@{
+    ViewBag.Title = "Demo";
+}
+
+@using (@Html.BeginForm("Index", "Demo", FormMethod.Post))
+{
+    //...
+    <input type="text" name="StringList" />
+    <input type="text" name="StringList"/>
+    <input type="submit" />
+}

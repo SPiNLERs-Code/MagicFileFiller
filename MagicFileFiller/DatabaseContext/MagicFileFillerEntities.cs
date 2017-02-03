@@ -18,6 +18,11 @@ namespace MagicFileFiller.DatabaseContext
             modelBuilder.Entity<SelectItem>().ToTable("SelectItem");
             modelBuilder.Entity<Textbox>().ToTable("Textbox");
             modelBuilder.Entity<WordFile>().ToTable("WordFile");
+
+            modelBuilder.Entity<SelectType>().ToTable("SelectType");
+            modelBuilder.Entity<TextBoxType>().ToTable("TextBoxType");
+            modelBuilder.Entity<SelectType>().ToTable("SelectType");
+            modelBuilder.Entity<FormularField>().ToTable("FormularField");
         }
     }
 }
